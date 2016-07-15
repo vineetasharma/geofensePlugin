@@ -27,6 +27,13 @@
                             $scope.$apply();
                         }
                     });
+                Buildfire.geo.getCurrentPosition(
+                    null,
+                    function (err,position) {
+                        if (err)
+                            Buildfire.notifications.alert({message: "Enable your location service to use this plugin"});
+                    });
+
 
             }]);
 })(window.angular);

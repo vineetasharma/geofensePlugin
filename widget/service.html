@@ -100,14 +100,9 @@
                         {enableHighAccuracy: (info && info.data && info.data.highAccuracy) || false, timeout: 30000},
                         function (position) {
                             console.log('Position is :::::::::::', position);
-                            if (!position.coords.latitude) {
-                                if (showOneTimeAlertFlag) {
-                                    buildfire.notifications.alert({message: "Enable your location service to use this plugin"});
-                                    showOneTimeAlertFlag = false;
-                                }
-                            } else {
+                            if(position) {
                                 console.info('Watching Position------watchId:::', position.watchId, position, ' accuracy:' + info.data.highAccuracy, info);
-                                if (position && position.coords && position.coords.latitude && position.coords.longitude) {
+                                if (position.coords && position.coords.latitude && position.coords.longitude) {
                                     triggerAction(position.coords.latitude, position.coords.longitude);
                                 }
                             }
